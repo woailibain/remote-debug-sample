@@ -8,5 +8,5 @@ services:
     ports:
       - "5155:80"
     # enable local OS code watching and hot deployment 
-    volumes:
-      - ./remote-debug-sample:/src/remote-debug-sample
+    # volumes:
+    #   - ./remote-debug-sample:/src/remote-debug-sample

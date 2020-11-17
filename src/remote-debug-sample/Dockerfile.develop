@@ -10,12 +10,12 @@ COPY ["remote-debug-sample/remote-debug-sample.csproj", "remote-debug-sample/rem
 RUN dotnet restore remote-debug-sample/remote-debug-sample.csproj
 
 # comment below lines to enable the coding watching
-# COPY . .
-# WORKDIR /src/remote-debug-sample
-# RUN dotnet publish --no-restore -c Debug -o /app
-# WORKDIR /app
-# ENTRYPOINT ["dotnet", "remote-debug-sample.dll"]
+COPY . .
+WORKDIR /src/remote-debug-sample
+RUN dotnet publish --no-restore -c Debug -o /app
+WORKDIR /app
+ENTRYPOINT ["dotnet", "remote-debug-sample.dll"]
 
 # uncomment below lines to enable the coding watching
-WORKDIR /src/remote-debug-sample
-ENTRYPOINT ["dotnet","watch", "run","--no-launch-profile"]
+# WORKDIR /src/remote-debug-sample
+# ENTRYPOINT ["dotnet","watch", "run","--no-launch-profile"]
