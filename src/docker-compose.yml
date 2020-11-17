@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  remote-debug-sample:
+    image: ${REGISTRY:-kiwiho}/remote-debug-sample:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: remote-debug-sample/Dockerfile.develop
+
