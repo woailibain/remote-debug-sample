@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remote-debug-sample-deployment
+spec:
+  replicas: 3
+  template:  
+    metadata:
+      name: remote-debug-sample
+      labels:
+        app: remote-debug-sample
+    spec:
+      containers:
+        - name: remote-debug-sample-containers
+          image: kiwiho/remote-debug-sample:linux-latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Never
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://0.0.0.0:80
+  selector:
+    matchLabels:
+      app: remote-debug-sample
