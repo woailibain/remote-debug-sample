@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: remote-debug-sample
   labels:
-    app: k8s-getting-start
+    app: remote-debug-sample
 spec:
   containers:
     - name: remote-debug-sample-containers
