@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: remote-debug-sample-ingress
+spec:
+  defaultBackend:
+    service:
+      name: remote-debug-sample-service
+      port:
+        number: 5000

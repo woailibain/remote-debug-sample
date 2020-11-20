@@ -1,8 +1,12 @@
-1. create Pod on Kubernetes
-```kubectl create -f deploy.yaml```
+### Access app through Ingress
+1. create deployment
+```kubectl create -f deployment.yaml```
 
-2. get Pod status on Kubernetes
-```kubectl get pods```
+2. add service to map the Pod
+```kubectl create -f service.yaml```
 
-3. forward ports from local to Kubernetes pod
-```kubectl port-forward remote-debug-sample 5000:80```
+3. add Ingress to access the Services externally
+```kubectl create -f ingress.yaml```
+
+4. to see is the Ingress can touch Service
+```kubectl describe ingress remote-debug-sample-ingress```
