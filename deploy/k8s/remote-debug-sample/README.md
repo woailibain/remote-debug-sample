@@ -5,4 +5,4 @@
 ```kubectl get pods```
 
 3. forward ports from local to Kubernetes pod
-```kubectl port-forward remote-debug-sample 5000:5000```
+```kubectl port-forward remote-debug-sample 5000:80```

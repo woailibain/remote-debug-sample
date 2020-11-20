@@ -9,5 +9,8 @@ spec:
     - name: remote-debug-sample-containers
       image: kiwiho/remote-debug-sample:linux-latest
       ports:
-        - containerPort: 5000
+        - containerPort: 80
       imagePullPolicy: Never
+      env:
+        - name: ASPNETCORE_URLS
+          value: http://0.0.0.0:80
