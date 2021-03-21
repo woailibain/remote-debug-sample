@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["kiwiho.example.Basket.API/kiwiho.example.Basket.API.csproj", "kiwiho.example.Basket.API/kiwiho.example.Basket.API.csproj"]
+
+RUN dotnet restore kiwiho.example.Basket.API/kiwiho.example.Basket.API.csproj
+
+# comment below lines to enable the coding watching
+COPY . .
+WORKDIR /src/kiwiho.example.Basket.API
+RUN dotnet publish --no-restore -c Debug -o /app
+WORKDIR /app
+ENTRYPOINT ["dotnet", "kiwiho.example.Basket.API.dll"]

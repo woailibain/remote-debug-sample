@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target:  /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/basket"
+        pathType: Prefix
+        backend:
+          service:
+            name: basket-api-service
+            port:
+              number: 80
+      - path: "/catelog"
+        pathType: Prefix
+        backend:
+          service:
+            name: catelog-api-service
+            port:
+              number: 80

@@ -6,4 +6,14 @@ services:
     build:
       context: .
       dockerfile: remote-debug-sample/Dockerfile.develop
+  catelog-api:
+    image: ${REGISTRY:-kiwiho}/catelog-api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: kiwiho.example.Catelog.API/Dockerfile.develop
+  basket-api:
+    image: ${REGISTRY:-kiwiho}/basket-api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: kiwiho.example.Basket.API/Dockerfile.develop
 

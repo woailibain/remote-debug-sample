@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["kiwiho.example.Catelog.API/kiwiho.example.Catelog.API.csproj", "kiwiho.example.Catelog.API/kiwiho.example.Catelog.API.csproj"]
+
+RUN dotnet restore kiwiho.example.Catelog.API/kiwiho.example.Catelog.API.csproj
+
+# comment below lines to enable the coding watching
+COPY . .
+WORKDIR /src/kiwiho.example.Catelog.API
+RUN dotnet publish --no-restore -c Debug -o /app
+WORKDIR /app
+ENTRYPOINT ["dotnet", "kiwiho.example.Catelog.API.dll"]
